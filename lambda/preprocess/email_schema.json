@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "version": "1.0.0",
+    "title": "EmailSchema",
+    "type": "object",
+    "properties": {
+        "address": {
+            "type": "string",
+            "format": "email"
+        },
+        "subject": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 78
+        },
+        "body": {
+            "type": "string"
+        },
+        "urls": {
+            "type": "array",
+            "items": {
+              	"anyOf": [
+                  { "format": "uri", "pattern": "^https?://" },
+                  { "format": "hostname" }
+                ]
+            },
+            "minItems": 1
+        }
+    },
+    "required": [ "address", "subject", "body", "urls" ]
+}
